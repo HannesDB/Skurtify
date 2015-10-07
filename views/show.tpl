@@ -12,10 +12,13 @@
       <h1>Skurtify</h1>
     </header>
     <div>
-      <form action="/show/" method="POST">
-        <input required type="text" name="search" placeholder="Search">
-        <input type="submit" name="send" value="Search">
-      </form>
+      <p>Top 20 result:
+        %for i, t, a in zip(ids, tracks, art):
+          <p>
+            {{i}}. {{t}}. {{a}}
+          </p>
+        %end
+      </p>
     </div>
   </body>
 </html>

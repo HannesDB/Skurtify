@@ -1,6 +1,7 @@
 import spotipy
-sp = spotipy.Spotify()
 
-results = sp.search(q='Morrissey', limit=20)
-for i, t in enumerate(results['tracks']['items']):
-    print '', i, t['name']
+def spotip(input_search):
+	sp = spotipy.Spotify()
+	
+	results = sp.search(q=input_search, limit=20)
+	return results
