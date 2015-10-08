@@ -1,0 +1,23 @@
+body {
+  width: 1000px;
+  margin: 5px auto;
+
+}
+
+header {
+  float: left;
+  width: 984px;
+  padding: 5px;
+  margin: 2px;
+  border: solid black 1px;
+
+}
+
+div {
+  float: left;
+  width: 984px;
+  padding: 5px;
+  margin: 2px;
+  border: solid black 1px;
+
+}
