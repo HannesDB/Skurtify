@@ -12,7 +12,7 @@
       <h1>Skurtify</h1>
     </header>
     <div>
-      <form action="/show/" method="POST">
+      <form action="/search/" method="POST">
         <input required type="text" name="search" placeholder="Search">
         <input type="submit" name="send" value="Search">
       </form>

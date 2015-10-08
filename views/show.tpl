@@ -15,7 +15,7 @@
       <p>Top 20 result:
         %for i, t, a in zip(ids, tracks, art):
           <p>
-            {{i}}. {{t}}. {{a}}
+            {{i}}. {{t}} - {{a}}
           </p>
         %end
       </p>
