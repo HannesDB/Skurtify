@@ -18,19 +18,19 @@ def start():
 	return template ("index")
 
 @route('/search/', method='POST')
-def search():
+def get_track():
 	'''search'''
 	input_search = request.forms.search
 	ids = []
 	tracks = []
 	art = []
 	search_result = spotip(input_search)
-	for i, item in enumerate(search_result['tracks']['items']):
+	for i, item in enumerate(search_result['tracks']['items'], start=1):
 		ids.append(i)
 		tracks.append(item['name'])
-		#art.append(i['name'])
-		print item['artists'][0]['name']
+		art.append(item['artists'][0]['name'])
 	return template ("show", tracks=tracks, ids=ids, art=art)
+
 	
 
 run(host='localhost', port=8080, debug=True, reloader=True)
