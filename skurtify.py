@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#http://jsonlint.com/
 
 from bottle import *
 import json
 import spotipy
 from spotipytest import spotip
+from assr import test_sr
 
 @route("/static/<filepath:path>")
 def server_static(filepath):
@@ -20,16 +20,21 @@ def start():
 @route('/search/', method='POST')
 def get_track():
 	'''search'''
-	input_search = request.forms.search
-	ids = []
+	sr_play = test_sr()
 	tracks = []
 	art = []
-	search_result = spotip(input_search)
-	for i, item in enumerate(search_result['tracks']['items'], start=1):
-		ids.append(i)
-		tracks.append(item['name'])
-		art.append(item['artists'][0]['name'])
-	return template ("show", tracks=tracks, ids=ids, art=art)
+	pic = []
+	url = []
+	search_result = spotip(sr_play)
+
+	for item in search_result['tracks']['items']:
+		tracks = item['name']
+		art = item['artists'][0]['name']
+		pic = item['album']['images'][0]['url']
+		url = item['external_urls']['spotify']
+
+
+	return template ("search", tracks=tracks, art=art, pic=pic, url=url)
 
 	
 
