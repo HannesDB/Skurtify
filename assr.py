@@ -19,3 +19,10 @@ def test_sr():
 		except KeyError:
 			obj = json_obj['playlist']['previoussong']['description']
 			return obj
+
+	'''
+	#Se JSONkod vid behov
+	mer_kod = raw_input("Se JSONkod? Y/N: ")
+	if mer_kod == "Y" or mer_kod == "y":
+	    print json_obj
+	'''
