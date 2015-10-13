@@ -12,10 +12,15 @@
       <h1>Skurtify</h1>
     </header>
     <div id="bod">
-      <p>Tryck på knappen för att se vilken låt som spelas på P3 just nu:</p>
-      <form action="/search/" method="POST">
-        <input type="submit" name="send" value="Search">
-      </form>
+      <p>Just nu spelas:
+          <div id="bild">
+            <img src="{{pic}}" alt="{{art}}" style="width: 100px; height: 100px;">
+          </div>
+          <div id="text">
+            <p>{{tracks}} - {{art}}</p>
+            <p><a href="{{url}}">{{url}}</a></p>
+          </div>
+      </p>
     </div>
   </body>
 </html>
