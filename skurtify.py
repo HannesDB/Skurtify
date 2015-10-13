@@ -6,6 +6,7 @@ import json
 import spotipy
 from spotipytest import spotip
 from assr import test_sr
+from youtube import you_api
 
 @route("/static/<filepath:path>")
 def server_static(filepath):
@@ -20,11 +21,12 @@ def start():
 @route('/search/', method='POST')
 def get_track():
 	'''search'''
-	sr_play = test_sr()
+	sr_play, text = test_sr()
 	tracks = []
 	art = []
 	pic = []
 	url = []
+
 	search_result = spotip(sr_play)
 
 	for item in search_result['tracks']['items']:
@@ -34,7 +36,7 @@ def get_track():
 		url = item['external_urls']['spotify']
 
 
-	return template ("search", tracks=tracks, art=art, pic=pic, url=url)
+	return template ("search", tracks=tracks, art=art, pic=pic, url=url, text=text)
 
 	
 
