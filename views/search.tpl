@@ -18,7 +18,7 @@
           </div>
           <div id="text">
             <p>{{tracks}}</p>
-            <p><a href="{{url}}"><img src="{{url_pic}}" alt="Spotify" style="width: 30px; height: 30px;"></a></p>
+            <p><a href="{{url}}"><img src="{{url_pic}}" alt="Spotify" style="width: 30px; height: 30px;"></a>Spelades kl: {{time}}</p>
           </div>
       </p>
     </div>
