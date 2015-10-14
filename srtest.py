@@ -2,7 +2,7 @@ from urllib2 import urlopen
 from json import *
 
 url = "http://api.sr.se/api/v2/playlists/rightnow?channelid=164"
-#channel_id = "{{164}}"
+#channel_id = user input here
 #url += channel_id
 url += "&format=json"
 
@@ -14,8 +14,14 @@ try:
     print json_song
 #'playlist' -> 'nextsong' -> 'description'  
 except KeyError:
-    json_song = json_obj['playlist']['nextsong']['description']
-    print json_song
+    try:
+        #'playlist' -> 'previoussong' -> 'description' 
+        json_song = json_obj['playlist']['previoussong']['description']
+        print json_song
+    except KeyError:
+        #'playlist' -> 'nextsong' -> 'description' 
+        json_song = json_obj['playlist']['nextsong']['description']
+        print json_song
 
 #Se JSONkod vid behov
 mer_kod = raw_input("Se JSONkod? Y/N: ")
