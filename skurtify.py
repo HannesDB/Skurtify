@@ -22,22 +22,24 @@ def start():
 def get_track():
 	'''search'''
 	sr_play, text = test_sr()
-	tracks = []
-	art = []
-	pic = []
-	url = []
-
 	search_result = spotip(sr_play)
 
-	for item in search_result['tracks']['items']:
-		tracks = item['name']
-		art = item['artists'][0]['name']
-		pic = item['album']['images'][0]['url']
-		url = item['external_urls']['spotify']
+	if search_result['tracks']['next'] == None:
+		tracks = sr_play + " (Not avalible on spotify)"
+		pic = "http://www.clipartbest.com/cliparts/niX/nX7/niXnX7E5T.gif"
+		url = "http://localhost:8080"
+		url_pic = '../static/bilder/nospotify.png'
 
+		return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text)
 
-	return template ("search", tracks=tracks, art=art, pic=pic, url=url, text=text)
+	else:
+		for item in search_result['tracks']['items']:
+			tracks = sr_play
+			pic = item['album']['images'][0]['url']
+			url = item['external_urls']['spotify']
+			url_pic = '../static/bilder/spotify.png'
 
-	
+		return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text)
+		
 
 run(host='localhost', port=8080, debug=True, reloader=True)

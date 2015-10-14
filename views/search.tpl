@@ -14,11 +14,11 @@
     <div id="bod">
       <p>{{text}}:
           <div id="bild">
-            <img src="{{pic}}" alt="{{art}}" style="width: 100px; height: 100px;">
+            <img src="{{pic}}" alt="{{tracks}}" style="width: 100px; height: 100px;">
           </div>
           <div id="text">
-            <p>{{tracks}} - {{art}}</p>
-            <p><a href="{{url}}"><img src="../static/bilder/spotify.png" alt="Spotify" style="width: 20px; height: 20px;"></a></p>
+            <p>{{tracks}}</p>
+            <p><a href="{{url}}"><img src="{{url_pic}}" alt="Spotify" style="width: 30px; height: 30px;"></a></p>
           </div>
       </p>
     </div>

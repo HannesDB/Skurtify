@@ -9,7 +9,7 @@ def test_sr():
 	url = "http://api.sr.se/api/v2/playlists/rightnow?channelid=164&format=json"
 	response = urlopen(url)
 	json_obj = load(response)
-
+	print json_obj
 	try:
 		obj = json_obj['playlist']['song']['description']
 		text = 'Just nu spelas'
