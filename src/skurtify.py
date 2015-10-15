@@ -4,8 +4,8 @@
 from bottle import *
 import json
 import spotipy
-from spotipytest import spotip
-from assr import test_sr
+from spotip import spotip
+from sr_api import sr_api
 
 @route("/static/<filepath:path>")
 def server_static(filepath):
@@ -20,11 +20,11 @@ def start():
 @route('/search/')
 def get_track():
 	'''search'''
-	sr_play, text, time = test_sr(request)
-	search_result = spotip(sr_play)
+	song, text, time = sr_api(request)
+	search_result = spotip(song)
 
 	if search_result['tracks']['next'] == None:
-		tracks = sr_play + " (Not avalible on spotify)"
+		tracks = song + " (Not avalible on spotify)"
 		pic = "http://www.clipartbest.com/cliparts/niX/nX7/niXnX7E5T.gif"
 		url = "http://localhost:8080"
 		url_pic = '../static/bilder/nospotify.png'
@@ -33,7 +33,7 @@ def get_track():
 
 	else:
 		for item in search_result['tracks']['items']:
-			tracks = sr_play
+			tracks = song
 			pic = item['album']['images'][0]['url']
 			url = item['external_urls']['spotify']
 			url_pic = '../static/bilder/spotify.png'

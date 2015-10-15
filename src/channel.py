@@ -1,6 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-
-def chann(request):
+def channel(request):
+	'''writes channel name'''
 	if request == "132":
 		return "P1"
 
