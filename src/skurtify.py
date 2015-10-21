@@ -31,7 +31,8 @@ def get_track():
 		
 		if request.headers.get('Accept') == "application/json":
 			response.set_header("Content-Type", "application/json")
-			return json.dumps(song)
+			json_obj= {"song": {"song": tracks, "spotify_url": url, "sr_playtime": time}}
+			return json.dumps(json_obj)
 		else:
 			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 
@@ -44,7 +45,8 @@ def get_track():
 
 		if request.headers.get('Accept') == "application/json":
 			response.set_header("Content-Type", "application/json")
-			return json.dumps(song)
+			json_obj = {"song": {"song": tracks, "spotify_url": url, "sr_playtime": time}}
+			return json.dumps(json_obj)
 		else:
 			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 
