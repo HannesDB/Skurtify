@@ -21,34 +21,14 @@ def start():
 def get_track():
 	'''search'''
 	song, text, time = sr_api(request)
-	search_result = spotip(song)
+	pic, url, url_pic = spotip(song)
 
-	if search_result['tracks']['next'] == None:
-		tracks = song + " (Not avalible on spotify)"
-		pic = "http://www.clipartbest.com/cliparts/niX/nX7/niXnX7E5T.gif"
-		url = "http://localhost:8080"
-		url_pic = '../static/bilder/nospotify.png'
-		
-		if request.headers.get('Accept') == "application/json":
-			response.set_header("Content-Type", "application/json")
-			json_obj= {"song": {"song": tracks, "spotify_url": url, "sr_playtime": time}}
-			return json.dumps(json_obj)
-		else:
-			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
-
+	if request.headers.get('Accept') == "application/json":
+		response.set_header("Content-Type", "application/json")
+		json_obj = {"song": {"song": song, "spotify_url": url, "sr_playtime": time}}
+		return json.dumps(json_obj)
 	else:
-		for item in search_result['tracks']['items']:
-			tracks = song
-			pic = item['album']['images'][0]['url']
-			url = item['external_urls']['spotify']
-			url_pic = '../static/bilder/spotify.png'
-
-		if request.headers.get('Accept') == "application/json":
-			response.set_header("Content-Type", "application/json")
-			json_obj = {"song": {"song": tracks, "spotify_url": url, "sr_playtime": time}}
-			return json.dumps(json_obj)
-		else:
-			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
+		return template ("search", tracks=song, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 
 
 run(host='localhost', port=8080, debug=True, reloader=True)
