@@ -28,8 +28,12 @@ def get_track():
 		pic = "http://www.clipartbest.com/cliparts/niX/nX7/niXnX7E5T.gif"
 		url = "http://localhost:8080"
 		url_pic = '../static/bilder/nospotify.png'
-
-		return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
+		
+		if request.headers.get('Accept') == "application/json":
+			response.set_header("Content-Type", "application/json")
+			return json.dumps(song)
+		else:
+			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 
 	else:
 		for item in search_result['tracks']['items']:
@@ -38,7 +42,11 @@ def get_track():
 			url = item['external_urls']['spotify']
 			url_pic = '../static/bilder/spotify.png'
 
-		return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
+		if request.headers.get('Accept') == "application/json":
+			response.set_header("Content-Type", "application/json")
+			return json.dumps(song)
+		else:
+			return template ("search", tracks=tracks, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 
 
 run(host='localhost', port=8080, debug=True, reloader=True)
