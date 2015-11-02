@@ -11,6 +11,10 @@ def spotip(song):
 	print song
 
 	if results['tracks']['next'] == None:
+                #Test för att plocka bort &-tecken i söksträngen 
+##              for item in song:
+##                      if item == "&":
+##                              new_song = song.replace(item, "")
 		li = (song.split('-'))
 		sp = spotipy.Spotify()
 		results = sp.search(q=li[1], limit=1)
