@@ -22,5 +22,8 @@
           </div>
       </p>
     </div>
+          <center>
+      <img src="http://gfx.aftonbladet-cdn.se/image/16227413/800/imageColumn/3201eddd0df84/DROTTNING-SILVIA-OCH-SKURT.gif" alt="SKURT" style="width: 800px; height: 450px;">
+    </center>
   </body>
 </html>
