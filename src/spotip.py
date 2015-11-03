@@ -5,9 +5,9 @@ import spotipy
 
 def spotip(song):
 	'''search for song on spotify'''
-	for item in song:
-                if item == "&":
-                        song = song.replace(item, "")
+        song = song.replace("ft. ", "", 5)
+        song = song.replace("& ", "", 5)
+        
 ##        for item in song:
 ##                if item == "å" or item == "ä":
 ##                        song = song.replace(item, "a")
