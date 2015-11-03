@@ -20,7 +20,7 @@
           <option value="164">P3</option>
           <option value="220">P4</option>
         </select>
-        <p>Tryck på knappen för att se vilken låt som spelas på P3 just nu:</p>
+        <p>Tryck på knappen för att se vilken låt som spelas på radio just nu:</p>
         <input type="submit" name="send" value="Search">
       </form>
     </div>
