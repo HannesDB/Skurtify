@@ -14,19 +14,23 @@ def server_static(filepath):
 
 @route('/')
 def start():
-	'''Mainpage'''
+	'''Loads mainpage'''
 	return template ("index")
 
 @route('/search/')
 def get_track():
-	'''search'''
+	'''Searching after song playing on sr, then takes the result and searching after song on spotify. Returns the result as template or JSON if asked'''
 	song, text, time = sr_api(request)
 	pic, url, url_pic = spotip(song)
 
 	if request.headers.get('Accept') == "application/json":
 		response.set_header("Content-Type", "application/json")
-		json_obj = {"song": {"song": song, "spotify_url": url, "sr_playtime": time}}
-		return json.dumps(json_obj)
+		if pic == "../static/bilder/spono.jpg":
+			json_obj = {"song": {"song": song, "spotify_url": None, "pic_url": None, "sr_playtime": time}}
+			return json.dumps(json_obj)
+		else:
+			json_obj = {"song": {"song": song, "spotify_url": url, "pic_url": pic, "sr_playtime": time}}
+			return json.dumps(json_obj)
 	else:
 		return template ("search", tracks=song, pic=pic, url=url, url_pic=url_pic, text=text, time=time)
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 def channel(request):
-	'''writes channel name'''
+	'''converts channel id to channel name'''
 	if request == "132":
 		return "P1"
 
