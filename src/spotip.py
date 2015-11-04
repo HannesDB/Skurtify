@@ -22,7 +22,7 @@ def spotip(song):
 	# print song
 
 	if results['tracks']['total'] == 0:
-		pic = "http://static.photo.net/attachments/bboard/00I/00IkUN-33436284.gif"
+		pic = "../static/bilder/spono.jpg"
 		url = "#"
 		url_pic = '../static/bilder/nospotify.png'
 		return (pic, url, url_pic)
