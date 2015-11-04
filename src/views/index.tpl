@@ -8,21 +8,23 @@
   </head>
 
   <body>
-    <header>
-      <h1>Skurtify</h1>
-    </header>
-    <div id="bod">
-      <p>Välj radiokanal</p>
-      <form action="/search/" method="GET">
-        <select name="channel">
-          <option value="132">P1</option>
-          <option value="163">P2</option>
-          <option value="164">P3</option>
-          <option value="220">P4</option>
-        </select>
-        <p>Tryck på knappen för att se vilken låt som spelas på radio just nu:</p>
-        <input type="submit" name="send" value="Search">
-      </form>
+    <div id="bodydiv">
+      <header id="head">
+        <h1>Skurtify</h1>
+      </header>
+      <div id="bod">
+        <p>Välj radiokanal</p>
+        <form action="/search/" method="GET">
+          <select name="channel">
+            <option value="132">P1</option>
+            <option value="163">P2</option>
+            <option value="164">P3</option>
+            <option value="220">P4</option>
+          </select>
+          <p>Tryck på knappen för att se vilken låt som spelas på radio just nu:</p>
+          <input type="submit" name="send" value="Search">
+        </form>
+      </div>
     </div>
   </body>
 </html>
